@@ -374,7 +374,7 @@ static AVOutputFormat *get_oformat(const char *codec, char *filename)
 #endif
         /* Manually override the codec id. */
         if (of)
-            of->video_codec = AV_CODEC_ID_SMPEG4V2;
+            of->video_codec = AV_CODEC_ID_MSMPEG4V2;
 
     } else if (strcmp(codec, "swf") == 0) {
         ext = ".swf";
