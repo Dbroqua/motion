@@ -595,7 +595,7 @@ struct ffmpeg *ffmpeg_open(char *ffmpeg_video_codec, char *filename,
     }
 
     /* Set the picture format - need in ffmpeg starting round April-May 2005 */
-    c->pix_fmt = PIX_FMT_YUV420P;
+    c->pix_fmt = AV_PIX_FMT_YUV420P;
 
     /* Get a mutex lock. */
     pthread_mutex_lock(&global_lock);
@@ -997,8 +997,9 @@ void ffmpeg_deinterlace(unsigned char *img, int width, int height)
     picture.linesize[1] = width2;
     picture.linesize[2] = width2;
 
-    /* We assume using 'PIX_FMT_YUV420P' always */
-    avpicture_deinterlace(&picture, &picture, PIX_FMT_YUV420P, width, height);
+    /* We assume using 'AV_PIX_FMT_YUV420P' always */
+    /* TODO: replace with yadif? */
+    //avpicture_deinterlace(&picture, &picture, AV_PIX_FMT_YUV420P, width, height);
 
 #if !defined(__SSE_MATH__) && (defined(__i386__) || defined(__x86_64__))
     __asm__ __volatile__ ( "emms");
