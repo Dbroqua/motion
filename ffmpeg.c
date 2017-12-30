@@ -15,6 +15,8 @@
 #include "ffmpeg.h"
 #include "motion.h"
 
+#define avcodec_alloc_frame av_frame_alloc
+
 #if LIBAVCODEC_BUILD > 4680
 /*
  * FFmpeg after build 4680 doesn't have support for mpeg1 videos with
